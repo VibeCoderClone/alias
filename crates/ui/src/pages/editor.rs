@@ -1,19 +1,16 @@
 use super::Page;
-use crate::theme;
-use eframe::egui::{self, RichText};
+use eframe::egui;
+
+mod desktop;
+mod mobile;
+
+/// Below this width we use mobile. Tablets (>= 600) get desktop.
+const DESKTOP_BREAKPOINT: f32 = 600.0;
 
 pub fn show(ui: &mut egui::Ui, project: usize) -> Option<Page> {
-    let mut next = None;
-
-    if ui.button("← Back").clicked() {
-        next = Some(Page::Home);
+    if ui.available_width() < DESKTOP_BREAKPOINT {
+        mobile::show(ui, project)
+    } else {
+        desktop::show(ui, project)
     }
-    ui.add_space(12.0);
-    ui.label(
-        RichText::new(format!("Editing project {project}"))
-            .size(18.0)
-            .color(theme::TEXT),
-    );
-
-    next
 }
