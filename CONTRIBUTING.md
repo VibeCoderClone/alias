@@ -8,8 +8,6 @@ Thanks for wanting to help! This is a small project, so keep it simple.
 - Pick up an issue labeled `good first issue`
 
 ## Before opening a PR
-- Run `cargo fmt` and `cargo clippy`
-- Run `cargo test`
 - Keep PRs small and focused on one change
 - For big changes, open an issue to discuss first
 
